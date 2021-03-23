@@ -12,7 +12,7 @@ export default {
 
     // Adicionar job RegistrationMail na Fila
     await Queue.add('RegistrationMail', { user })
-    await Queue.add('TemplateJob', { user })
+    await Queue.add('Template', { user })
 
     return res.json(user)
   }

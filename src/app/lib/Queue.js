@@ -20,9 +20,10 @@ export default {
   process() {
     return this.queues.forEach(queue => {
       queue.bull.process(queue.handle);
-
-      queue.bull.on('completed', data => {
-        console.log(data.returnvalue)
+      
+      queue.bull.on('completed', (job, result) => {
+        console.log(queue.name, result)
+        job.remove()
       })
 
       queue.bull.on('failed', (job, err) => {
@@ -30,5 +31,12 @@ export default {
         console.log(err);
       });
     })
+  },
+
+  async getRepeatableJobs() {
+   this.queues.map(async queue => {
+      const repeatable = await queue.bull.getRepeatableJobs()
+      console.log(repeatable)
+    });
   }
 };

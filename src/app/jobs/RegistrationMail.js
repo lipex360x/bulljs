@@ -12,6 +12,5 @@ export default {
       subject: 'Cadastro de Usuário',
       html: `Olá, ${user.name}, bem-vindo ao sistema de filas`
     })
-
   }
 }

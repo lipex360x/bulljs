@@ -12,6 +12,12 @@ app.post('/users', UsersControllers.store);
 
 app.use('/admin/queues', BullBoard.UI);
 
-app.listen(3333, () => {
+const server = app.listen(3333, () => {
   console.log('Server running on localhost:3333');
 });
+
+process.on('SIGINT', () => {
+  console.log('\n🔒 API Stopped')
+  server.close()
+  process.exit()
+})
