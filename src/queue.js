@@ -1,4 +1,5 @@
-import 'dotenv/config'
-import Queue from './app/lib/Queue'
+import 'dotenv/config';
 
-Queue.process()
+import Queue from './app/lib/Queue';
+
+Queue.process(); 
