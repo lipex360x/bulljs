@@ -1,4 +1,4 @@
-import Mail from '../lib/Mail'
+import Queue from '../lib/Queue'
 
 export default {
   async store(req, res) {
@@ -10,13 +10,8 @@ export default {
       password
     }
 
-    // Enviar email
-    await Mail.sendMail({
-      from: 'Queue Test <queue@queuetest.com>',
-      to: `${name} <${email}>`,
-      subject: 'Cadastro de Usuário',
-      html: `Olá, ${name}, bem-vindo ao sistema de filas`
-    })
+    // Adicionar job RegistrationMail na Fila
+    await Queue.add({ user })
 
     return res.json(user)
   }
