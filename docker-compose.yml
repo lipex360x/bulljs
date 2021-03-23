@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  redisdb:
+    image: redis
+    container_name: bulljs_redis
+    ports:
+      - 6379:6379
