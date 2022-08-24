@@ -40,7 +40,7 @@ Check more executable scripts in the `package.json` file and more details.
 
 #### :zap: Backend Technologies
 
-```json
+```js
   Javascript
   Express
   BullJS
